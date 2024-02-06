@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eduxcel</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+    <header>
+        <img src="pLogo.png" alt="Your Logo">
+    </header>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+        <!-- Add nav links latr -->
+    </nav>
+    <button id="darkModeToggle" onclick="toggleDarkMode()">
+        <span id="darkModeIcon">🌙</span> 
+        <span id="darkModeText">Toggle Dark Mode</span>
+    </button>
+    <main>
+        <section id="home">
+            <h2>Welcome to Eduxcel</h2>
+            <p>This is the homepage content.</p>
+        </section>
+
+        <section id="about">
+            <h2>About Us</h2>
+            <p>Learn more about Eduxcel.</p>
+        </section>
+
+        <section id="services">
+            <h2>Our Services</h2>
+            <p>Explore the services we offer.</p>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>Get in touch with Eduxcel.</p>
+            <!-- Add contact form for everyone here latr -->
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2024 Eduxcel. All rights reserved.
+    </footer>
+
+    <script>
+        let darkModeEnabled = false;
+
+        function toggleDarkMode() {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+            darkModeEnabled = !darkModeEnabled;
+
+            // Update button (test)
+            const darkModeText = document.getElementById('darkModeText');
+            darkModeText.innerText = darkModeEnabled ? 'Toggle Light Mode' : 'Toggle Dark Mode';
+        }
+    </script>
+</body>
+</html>
