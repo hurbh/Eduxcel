@@ -1,2 +1,2 @@
 # Eduxcel
-Website for school
+Website for Computer class (Sr. Fatima)
