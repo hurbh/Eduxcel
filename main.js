@@ -1,3 +1,4 @@
+/* Note: DIdnt work. */
 let darkModeEnabled = false;
 
 document.getElementById('darkModeToggle').addEventListener('click', toggleDarkMode);
