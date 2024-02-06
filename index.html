@@ -5,53 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eduxcel</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        body.dark-mode {
-            background-color: #1a1a1a; /* Dark background color */
-            color: #ffffff; /* Light text color */
-        }
-
-        header {
-            background-color: #000; /* Black header background color */
-            text-align: center;
-            padding: 20px;
-        }
-
-        header img {
-            max-width: 100px; /* Adjust the max-width of your logo */
-        }
-
-        nav a {
-            color: #ffffff; /* Light text color for navigation links */
-        }
-    </style>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
 
     <header>
         <img src="pLogo.png" alt="Your Logo">
     </header>
-
-    <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
-
     <nav>
         <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#services">Services</a>
         <a href="#contact">Contact</a>
-        <!-- Add more navigation links as needed -->
+        <!-- Add nav links latr -->
     </nav>
-
+    <button id="darkModeToggle" onclick="toggleDarkMode()">
+        <span id="darkModeIcon">🌙</span> 
+        <span id="darkModeText">Toggle Dark Mode</span>
+    </button>
     <main>
-        <!-- Your website content goes here -->
         <section id="home">
-            <h2>Welcome to Your Company</h2>
+            <h2>Welcome to Eduxcel</h2>
             <p>This is the homepage content.</p>
         </section>
 
         <section id="about">
             <h2>About Us</h2>
-            <p>Learn more about Your Company.</p>
+            <p>Learn more about Eduxcel.</p>
         </section>
 
         <section id="services">
@@ -61,7 +41,8 @@
 
         <section id="contact">
             <h2>Contact Us</h2>
-            <p>Get in touch with Your Company.</p>
+            <p>Get in touch with Eduxcel.</p>
+            <!-- Add contact form for everyone here latr -->
         </section>
     </main>
 
@@ -70,8 +51,16 @@
     </footer>
 
     <script>
+        let darkModeEnabled = false;
+
         function toggleDarkMode() {
-            document.body.classList.toggle('dark-mode');
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+            darkModeEnabled = !darkModeEnabled;
+
+            // Update button (test)
+            const darkModeText = document.getElementById('darkModeText');
+            darkModeText.innerText = darkModeEnabled ? 'Toggle Light Mode' : 'Toggle Dark Mode';
         }
     </script>
 </body>
