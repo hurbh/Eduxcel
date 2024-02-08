@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,45 +8,67 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
-
     <header>
-        <img src="Plogo.png" alt="Your Logo">
+        <img src="pLogo.png" alt="The Logo" class="scale-in-center">
+        <p class="tagline">Empowering Minds, Illuminating Futures: Explore Knowledge with Eduxcel!</p>
     </header>
+
     <nav>
         <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#services">Services</a>
         <a href="#contact">Contact</a>
-        <!-- Add nav links latr -->
     </nav>
-    <button id="darkModeToggle" onclick="toggleDarkMode()">
-        <span id="darkModeIcon">🌙</span> 
-        <span id="darkModeText">Toggle Dark Mode</span>
-    </button>
-    <main>
+
+    <div class="search-container" style="text-align:left;">
+        <button style="text-align: left;" id="darkModeToggle" onclick="toggleDarkMode()">
+            <span id="darkModeIcon">🌙</span> 
+            <span id="darkModeText">Toggle Dark Mode</span>
+        </button>
+        <input type="text" id="searchBar" placeholder="Search..." style="text-align:right;">
+        <button onclick="searchFunction()" style="text-align:right;">Search</button>
+    </div>
+
+    <main> 
         <section id="home">
             <h2>Welcome to Eduxcel</h2>
-            <p>This is the homepage content.</p>
+            <p>This is a Project for making a website in general.</p>
         </section>
 
         <section id="about">
             <h2>About Us</h2>
-            <p>Learn more about Eduxcel.</p>
+            <p>Learn more about Eduxcel.<br> Eduxcel is a fake company made for a Computer Project <br> we found the name, Eduxcel using a random name generator.<br>Me, Ismail, and Mohammad agreed that this was the best name.<br>We did the same to find a logo, and the style dark mode</p>
         </section>
 
         <section id="services">
             <h2>Our Services</h2>
-            <p>Explore the services we offer.</p>
+            <p>Explore the services we offer.(PS- there is none)</p>
         </section>
 
         <section id="contact">
             <h2>Contact Us</h2>
-            <p>Get in touch with Eduxcel.</p>
-            <!-- Add contact form for everyone here latr -->
+            <p>Keep in mind our business hours</p>
+
+            <label for="teamDropdown">Select a Team Member:</label>
+            <select id="teamDropdown" onchange="showTeamInfo()">
+                <option value="default" selected disabled>Select a team member</option>
+                <option value="Mohammad Ashab">Mohammad Ashab</option>
+                <option value="Hasnat Anwar">Hasnat Anwar</option>
+                <option value="Abdulfattah Gamil">Abdulfattah Gamil</option>
+                <option value="Ismail Mohamed">Ismail Mohamed</option>
+                <option value="Shafin Azad">Shafin Azad</option>
+                <option value="Yaseen Mohamed">Yaseen Mohamed</option>
+            </select>
+
+            <div id="teamInfo" style="display: none;">
+                <!-- should be loaded dynamically, no worries-->
+            </div>
         </section>
     </main>
 
     <footer>
+        <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+        <div class="elfsight-app-db740cd4-11fa-4e40-aada-b7fa8fadeb18" data-elfsight-app-lazy></div>
         &copy; 2024 Eduxcel. All rights reserved.
     </footer>
 
@@ -61,7 +83,85 @@
             // Update button (test)
             const darkModeText = document.getElementById('darkModeText');
             darkModeText.innerText = darkModeEnabled ? 'Toggle Light Mode' : 'Toggle Dark Mode';
+ 
+            updateContactLinkColor();
         }
+
+function updateContactLinkColor() {
+    var contactLinkElement = document.getElementById("contactLink");
+    if (contactLinkElement) {
+        contactLinkElement.style.color = darkModeEnabled ? "lightblue" : "darkblue";
+    }
+}
+
+        function searchFunction() {
+            const searchTerm = document.getElementById('searchBar').value.toLowerCase();
+            const sections = document.querySelectorAll('main section');
+
+            sections.forEach(section => {
+                const sectionText = section.textContent.toLowerCase();
+
+                if (sectionText.includes(searchTerm)) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        }
+
+        function showTeamInfo() {
+            var dropdown = document.getElementById("teamDropdown");
+            var selectedTeamMember = dropdown.value;
+
+            // Array with team member information, including contact
+            var teamInfo = {
+                "Mohammad Ashab": {
+                    title: "Web Developer/Board Member",
+                    interests: "Frontend Ui Development and Decision making",
+                    contact: "Mohammad.Ashab@alnoornyc.org"
+                },
+                "Hasnat Anwar": {
+                    title: "Team Leader",
+                    interests: "User Experience, Interface Design(I coded the entire website)",
+                    contact: "Hasnat.Anwar@alnoornyc.org"
+                },
+                "Abdulfattah Gamil": {
+                    title: "Marketing Specialist",
+                    interests: "Digital Marketing, Social Media",
+                    contact: "Abdulfattah.gamil@alnoornyc.org"
+                },
+                "Ismail Mohamed": {
+                    title: "Board Member",
+                    interests: "Lead Ui decision making",
+                    contact: "Ismail.mohamed@alnoornyc.org"
+                },
+                "Shafin Azad": {
+                    title: "Graphic Designer",
+                    interests: "Graphic Design, Illustration",
+                    contact: "Shafin.Azad@alnoornyc.org"
+                },
+                "Yaseen Mohamed": {
+                    title: "Financial Analyst",
+                    interests: "Human Resources, Talent Management",
+                    contact: "Yaseen.mohamed@alnoornyc.org"
+                }
+            };
+
+    if (selectedTeamMember !== "default") {
+        var memberTitle = teamInfo[selectedTeamMember].title;
+        var memberInterests = teamInfo[selectedTeamMember].interests;
+        var memberContact = teamInfo[selectedTeamMember].contact;
+
+        var contactLink = "<a href='mailto:" + memberContact + "' id='contactLink'>" + memberContact + "</a>";
+        document.getElementById("teamInfo").innerHTML = "<h3>" + selectedTeamMember + "</h3><p>Title: " + memberTitle + "</p><p>Interests: " + memberInterests + "</p><p>Contact: " + contactLink + "</p>";
+
+        updateContactLinkColor();
+
+        document.getElementById("teamInfo").style.display = "block";
+    } else {
+        document.getElementById("teamInfo").style.display = "none";
+    }
+}
     </script>
 </body>
 </html>
